@@ -7,10 +7,12 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
+        maven { setUrl("https://dl.bintray.com/kotlin/kotlin-eap") }
     }
 
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+        classpath("org.jetbrains.kotlin:kotlin-frontend-plugin:0.0.45")
     }
 
 }
@@ -21,6 +23,7 @@ plugins {
     val docker_plugin_version: String by project
 
     kotlin("multiplatform") version kotlin_version apply false
+    id("org.jetbrains.kotlin.frontend")
     id("maven-publish")
     id("com.moowork.node") version node_plugin_version
     id("com.bmuschko.docker-remote-api") version docker_plugin_version
