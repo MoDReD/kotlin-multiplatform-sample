@@ -34,6 +34,23 @@ dependencies {
     
     compile(project(":proj-common"))
     
+    // here I am trying to import front webjar
+    // This FAILS with
+    //       > Unable to find a matching variant of project :proj-angularfront:
+    //          - Variant 'apiElements':
+    //              - Required org.gradle.usage 'java-runtime' and found incompatible value 'kotlin-api'.
+    //              - Found org.jetbrains.kotlin.localToProject 'public' but wasn't required.
+    //              - Required org.jetbrains.kotlin.platform.type 'jvm' and found incompatible value 'js'.
+    //          - Variant 'compile':
+    //              - Required org.gradle.usage 'java-runtime' but no value provided.
+    //              - Found org.jetbrains.kotlin.localToProject 'local to :proj-angularfront' but wasn't required.
+    //              - Required org.jetbrains.kotlin.platform.type 'jvm' and found incompatible value 'js'.
+    //          - Variant 'compileOnly':
+    //              - Required org.gradle.usage 'java-runtime' but no value provided.
+    //              - Found org.jetbrains.kotlin.localToProject 'local to :proj-angularfront' but wasn't required.
+    //              - Required org.jetbrains.kotlin.platform.type 'jvm' and found incompatible value 'js'.
+    compile(project(":proj-angularfront"))
+    
     testCompile("io.ktor:ktor-server-tests:$ktor_version")
 }
 
